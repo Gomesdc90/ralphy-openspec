@@ -13,7 +13,7 @@
   "hero.viewSource": "소스 보기",
   "hero.ralphAdvantage": "AI가 작업 완료까지 반복을 통해 자기 수정",
   "hero.openspecAdvantage": "구조화된 스펙이 코드 작성 전에 의도를 고정",
-  "hero.combinedAdvantage": "AI 에이전트로 코드 조각이 아닌 완전한 기능 배포",
+  "hero.combinedAdvantage": "자율 에이전트 워크플로우로 프로덕션급 프로젝트 배포—컨텍스트 윈도우 제한 없음",
   
   "setup.title": "빠른 시작",
   "setup.step1": "설치",

@@ -12,17 +12,26 @@ const t = useTranslations(lang);
     <p class="hero-subtitle" set:html={t('hero.subtitle')}></p>
     
     <div class="hero-features">
-      <div class="feature-line">
-        <span class="feature-label">Ralph Loop</span>
-        <span class="feature-desc">{t('hero.ralphAdvantage')}</span>
+      <div class="feature-item">
+        <span class="feature-icon">🔄</span>
+        <div class="feature-text">
+          <span class="feature-name">Ralph Loop</span>
+          <span class="feature-desc">{t('hero.ralphAdvantage')}</span>
+        </div>
       </div>
-      <div class="feature-line">
-        <span class="feature-label">OpenSpec</span>
-        <span class="feature-desc">{t('hero.openspecAdvantage')}</span>
+      <div class="feature-item">
+        <span class="feature-icon">📋</span>
+        <div class="feature-text">
+          <span class="feature-name">OpenSpec</span>
+          <span class="feature-desc">{t('hero.openspecAdvantage')}</span>
+        </div>
       </div>
-      <div class="feature-line highlight">
-        <span class="feature-label">+</span>
-        <span class="feature-desc">{t('hero.combinedAdvantage')}</span>
+      <div class="feature-item combined">
+        <span class="feature-icon">⚡</span>
+        <div class="feature-text">
+          <span class="feature-name">Ralphy-Spec</span>
+          <span class="feature-desc">{t('hero.combinedAdvantage')}</span>
+        </div>
       </div>
     </div>
     
@@ -69,44 +78,60 @@ const t = useTranslations(lang);
     font-size: 14px;
     color: var(--color-text-secondary);
     max-width: 400px;
-    margin: 0 auto 2rem;
+    margin: 0 auto 2.5rem;
     line-height: 1.7;
   }
 
   .hero-features {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    max-width: 480px;
-    margin: 0 auto 2rem;
+    gap: 0.75rem;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
   }
 
-  .feature-line {
+  .feature-item {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 0.75rem;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+  }
+
+  .feature-item:hover {
+    background: var(--color-bg-secondary);
+  }
+
+  .feature-item.combined {
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
-    border-radius: 6px;
-    font-size: 12px;
-    text-align: left;
   }
 
-  .feature-line.highlight {
-    background: linear-gradient(135deg, rgba(161, 161, 170, 0.1), rgba(250, 250, 250, 0.05));
-    border-color: var(--color-text-muted);
+  .feature-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
   }
 
-  .feature-label {
+  .feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .feature-name {
+    font-size: 13px;
     font-weight: 600;
     color: var(--color-text);
-    min-width: 70px;
-    flex-shrink: 0;
   }
 
   .feature-desc {
+    font-size: 12px;
     color: var(--color-text-secondary);
+    line-height: 1.5;
   }
 
   .hero-actions {
@@ -120,7 +145,6 @@ const t = useTranslations(lang);
     .hero-title { font-size: 2rem; }
     .hero-subtitle { font-size: 13px; }
     .hero-actions { flex-direction: column; align-items: center; }
-    .feature-line { font-size: 11px; }
-    .feature-label { min-width: 60px; }
+    .feature-item { padding: 0.625rem 0.75rem; }
   }
 </style>

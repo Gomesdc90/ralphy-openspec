@@ -13,7 +13,7 @@
   "hero.viewSource": "ソースを見る",
   "hero.ralphAdvantage": "AIがタスク完了まで反復を通じて自己修正",
   "hero.openspecAdvantage": "構造化されたスペックがコード作成前に意図を固定",
-  "hero.combinedAdvantage": "AIエージェントで断片ではなく完全な機能をデプロイ",
+  "hero.combinedAdvantage": "自律エージェントワークフローで本番レベルのプロジェクトをデプロイ—コンテキストウィンドウの制限なし",
   
   "setup.title": "クイックスタート",
   "setup.step1": "インストール",
