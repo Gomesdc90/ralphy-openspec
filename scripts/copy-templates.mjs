@@ -16,7 +16,8 @@ async function copyDir(srcDir, dstDir) {
   }
 }
 
-const root = path.resolve(new URL(".", import.meta.url).pathname, "..", "..");
+const scriptsDir = path.dirname(new URL(import.meta.url).pathname);
+const root = path.resolve(scriptsDir, "..");
 const srcTemplates = path.join(root, "src", "templates");
 const dstTemplates = path.join(root, "dist", "templates");
 

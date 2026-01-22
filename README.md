@@ -1,5 +1,7 @@
 # ralphy-spec
 
+[English](README.md) | [简体中文](README.zh.md) | [한국어](README.ko.md) | [日本語](README.ja.md)
+
 One-command setup for **Ralph loop + OpenSpec** workflows across:
 - Cursor
 - OpenCode
