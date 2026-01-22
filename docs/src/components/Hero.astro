@@ -1,17 +1,20 @@
 ---
-// Hero section
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="hero">
   <div class="container">
-    <div class="hero-badge">AI Development Workflow</div>
+    <div class="hero-badge">{t('hero.badge')}</div>
     <h1 class="hero-title">ralphy-spec</h1>
-    <p class="hero-subtitle">Spec-driven development with iterative AI execution.<br/>OpenSpec + Ralph Loop in one command.</p>
+    <p class="hero-subtitle" set:html={t('hero.subtitle')}></p>
     
     <div class="hero-actions">
-      <a href="#setup" class="btn btn-primary">Get Started</a>
+      <a href="#setup" class="btn btn-primary">{t('hero.cta')}</a>
       <a href="https://github.com/wenqingyu/ralphy-openspec" target="_blank" rel="noopener" class="btn btn-secondary">
-        View Source
+        {t('hero.viewSource')}
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8"/>
         </svg>

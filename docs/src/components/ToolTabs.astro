@@ -1,16 +1,19 @@
 ---
-// Quick Setup section with tool tabs
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="section" id="setup">
   <div class="container">
-    <h4 class="section-title">Quick Start</h4>
+    <h4 class="section-title">{t('setup.title')}</h4>
 
     <!-- Install Command -->
     <div class="install-box">
       <div class="install-header">
         <span class="install-step">01</span>
-        <span class="install-label">Install</span>
+        <span class="install-label">{t('setup.step1')}</span>
       </div>
       <div class="install-command">
         <code>npx ralphy-spec init</code>
@@ -27,7 +30,7 @@
     <div class="tool-section">
       <div class="tool-header">
         <span class="install-step">02</span>
-        <span class="install-label">Use Commands</span>
+        <span class="install-label">{t('setup.step2')}</span>
       </div>
       
       <div class="tool-tabs">
@@ -43,23 +46,23 @@
             <div class="commands-section">
               <div class="command-row">
                 <code>/ralphy:plan</code>
-                <span>→ Create specs from requirements</span>
+                <span>→ {t('setup.cmd.plan')}</span>
               </div>
               <div class="command-row">
                 <code>/ralphy:implement</code>
-                <span>→ Build with iterative loop</span>
+                <span>→ {t('setup.cmd.implement')}</span>
               </div>
               <div class="command-row">
                 <code>/ralphy:validate</code>
-                <span>→ Verify acceptance criteria</span>
+                <span>→ {t('setup.cmd.validate')}</span>
               </div>
               <div class="command-row">
                 <code>/ralphy:archive</code>
-                <span>→ Complete and archive</span>
+                <span>→ {t('setup.cmd.archive')}</span>
               </div>
             </div>
             <div class="structure-section">
-              <div class="structure-label">Files Created</div>
+              <div class="structure-label">{t('setup.filesCreated')}</div>
               <pre><code>.cursor/prompts/
 ├── ralphy-plan.md
 ├── ralphy-implement.md
@@ -73,7 +76,7 @@ openspec/
             </div>
           </div>
           <div class="example-section">
-            <div class="example-label">Example</div>
+            <div class="example-label">{t('setup.example')}</div>
             <pre><code><span class="comment"># Plan</span>
 /ralphy:plan Add user authentication with JWT
 
@@ -94,23 +97,23 @@ openspec/
             <div class="commands-section">
               <div class="command-row">
                 <code>/ralphy:plan</code>
-                <span>→ Create specs from requirements</span>
+                <span>→ {t('setup.cmd.plan')}</span>
               </div>
               <div class="command-row">
                 <code>/ralphy:implement</code>
-                <span>→ Build with iterative loop</span>
+                <span>→ {t('setup.cmd.implement')}</span>
               </div>
               <div class="command-row">
                 <code>/ralphy:validate</code>
-                <span>→ Verify acceptance criteria</span>
+                <span>→ {t('setup.cmd.validate')}</span>
               </div>
               <div class="command-row">
                 <code>/ralphy:archive</code>
-                <span>→ Complete and archive</span>
+                <span>→ {t('setup.cmd.archive')}</span>
               </div>
             </div>
             <div class="structure-section">
-              <div class="structure-label">Files Created</div>
+              <div class="structure-label">{t('setup.filesCreated')}</div>
               <pre><code>.claude/commands/
 ├── ralphy-plan.md
 ├── ralphy-implement.md
@@ -124,7 +127,7 @@ openspec/
             </div>
           </div>
           <div class="example-section">
-            <div class="example-label">Example</div>
+            <div class="example-label">{t('setup.example')}</div>
             <pre><code><span class="comment"># Plan</span>
 /ralphy:plan Add payment processing with Stripe
 
@@ -154,7 +157,7 @@ openspec/
               </div>
             </div>
             <div class="structure-section">
-              <div class="structure-label">Files Created</div>
+              <div class="structure-label">{t('setup.filesCreated')}</div>
               <pre><code>AGENTS.md
 
 openspec/
@@ -168,7 +171,7 @@ openspec/
             </div>
           </div>
           <div class="example-section">
-            <div class="example-label">With Ralph Loop Runner</div>
+            <div class="example-label">{t('setup.withRunner')}</div>
             <pre><code>npm install -g @th0rgal/ralph-wiggum
 
 ralph "Follow AGENTS.md to implement add-api. \

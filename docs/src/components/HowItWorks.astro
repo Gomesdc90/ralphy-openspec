@@ -1,18 +1,21 @@
 ---
-// How It Works section
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="section" id="how-it-works">
   <div class="container">
-    <h4 class="section-title">How It Works</h4>
+    <h4 class="section-title">{t('howItWorks.title')}</h4>
     
     <div class="concepts">
       <div class="concept">
         <div class="concept-header">
           <span class="concept-num">01</span>
-          <h3>Ralph Wiggum Loop</h3>
+          <h3>{t('howItWorks.ralph.title')}</h3>
         </div>
-        <p>AI receives the <strong>same prompt repeatedly</strong> until task completion. Each iteration, it sees previous work in files and self-corrects.</p>
+        <p set:html={t('howItWorks.ralph.desc')}></p>
         <pre><code>while !done; do
   ai "Build X. Output DONE when complete."
 done</code></pre>
@@ -21,9 +24,9 @@ done</code></pre>
       <div class="concept">
         <div class="concept-header">
           <span class="concept-num">02</span>
-          <h3>OpenSpec</h3>
+          <h3>{t('howItWorks.openspec.title')}</h3>
         </div>
-        <p><strong>Specs before code.</strong> Structured specifications with acceptance criteria ensure AI knows exactly what to build.</p>
+        <p set:html={t('howItWorks.openspec.desc')}></p>
         <pre><code>openspec/
 ├── specs/      # Truth
 ├── changes/    # Work
@@ -32,52 +35,52 @@ done</code></pre>
     </div>
 
     <div class="workflow">
-      <div class="workflow-label">Workflow</div>
+      <div class="workflow-label">{t('workflow.title')}</div>
       <div class="workflow-steps">
         <div class="step">
-          <span class="step-name">Plan</span>
-          <span class="step-desc">PRD → Spec</span>
+          <span class="step-name">{t('workflow.plan')}</span>
+          <span class="step-desc">{t('workflow.planDesc')}</span>
         </div>
         <div class="step-arrow">→</div>
         <div class="step">
-          <span class="step-name">Implement</span>
-          <span class="step-desc">Loop</span>
+          <span class="step-name">{t('workflow.implement')}</span>
+          <span class="step-desc">{t('workflow.implementDesc')}</span>
         </div>
         <div class="step-arrow">→</div>
         <div class="step">
-          <span class="step-name">Validate</span>
-          <span class="step-desc">Tests</span>
+          <span class="step-name">{t('workflow.validate')}</span>
+          <span class="step-desc">{t('workflow.validateDesc')}</span>
         </div>
         <div class="step-arrow">→</div>
         <div class="step">
-          <span class="step-name">Archive</span>
-          <span class="step-desc">Merge</span>
+          <span class="step-name">{t('workflow.archive')}</span>
+          <span class="step-desc">{t('workflow.archiveDesc')}</span>
         </div>
       </div>
     </div>
 
     <div class="benefits">
-      <div class="benefits-label">Why This Works</div>
+      <div class="benefits-label">{t('benefits.title')}</div>
       <div class="benefits-grid">
         <div class="benefit">
-          <span class="benefit-problem">Vague requirements</span>
+          <span class="benefit-problem">{t('benefits.problem1')}</span>
           <span class="benefit-arrow">→</span>
-          <span class="benefit-solution">Specs lock intent</span>
+          <span class="benefit-solution">{t('benefits.solution1')}</span>
         </div>
         <div class="benefit">
-          <span class="benefit-problem">AI stops mid-task</span>
+          <span class="benefit-problem">{t('benefits.problem2')}</span>
           <span class="benefit-arrow">→</span>
-          <span class="benefit-solution">Loop retries</span>
+          <span class="benefit-solution">{t('benefits.solution2')}</span>
         </div>
         <div class="benefit">
-          <span class="benefit-problem">No verification</span>
+          <span class="benefit-problem">{t('benefits.problem3')}</span>
           <span class="benefit-arrow">→</span>
-          <span class="benefit-solution">Tests validate</span>
+          <span class="benefit-solution">{t('benefits.solution3')}</span>
         </div>
         <div class="benefit">
-          <span class="benefit-problem">Manual setup</span>
+          <span class="benefit-problem">{t('benefits.problem4')}</span>
           <span class="benefit-arrow">→</span>
-          <span class="benefit-solution">One command</span>
+          <span class="benefit-solution">{t('benefits.solution4')}</span>
         </div>
       </div>
     </div>
@@ -86,7 +89,7 @@ done</code></pre>
 
 <section class="section credits-section" id="credits">
   <div class="container">
-    <h4 class="section-title">Credits</h4>
+    <h4 class="section-title">{t('credits.title')}</h4>
     <div class="credits">
       <a href="https://ghuntley.com/ralph" target="_blank" rel="noopener" class="credit">
         <span class="credit-name">Ralph Methodology</span>
