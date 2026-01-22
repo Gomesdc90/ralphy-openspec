@@ -1,0 +1,73 @@
+{
+  "site.title": "Ralphy-Spec",
+  "site.description": "规范驱动的AI开发与迭代执行",
+  
+  "nav.home": "首页",
+  "nav.docs": "文档",
+  "nav.github": "GitHub",
+  "nav.getStarted": "快速开始",
+  
+  "hero.title": "规范驱动的AI开发与迭代执行",
+  "hero.subtitle": "结合 OpenSpec 的结构化规范与 Ralph 循环的迭代执行，实现可预测的AI辅助开发。",
+  "hero.cta": "快速开始",
+  "hero.learnMore": "了解更多",
+  
+  "quickstart.title": "快速开始",
+  "quickstart.description": "一条命令在您的项目中设置 Ralphy-Spec：",
+  
+  "section.whatIsRalph.title": "什么是 Ralph Wiggum 循环？",
+  "section.whatIsRalph.description": "Ralph 方法论（由 Geoffrey Huntley 提出）是一种开发方式，AI 代理会重复接收相同的提示直到完成任务。每次迭代，AI 都能看到之前在文件和 git 历史中的工作成果，从而形成自我纠正的反馈循环。",
+  "section.whatIsRalph.essence": "Ralph 的本质：",
+  "section.whatIsRalph.benefit1.title": "自我纠正",
+  "section.whatIsRalph.benefit1.desc": "AI 看到之前运行的测试失败并修复它们",
+  "section.whatIsRalph.benefit2.title": "持久性",
+  "section.whatIsRalph.benefit2.desc": "离开后回来，工作已完成",
+  "section.whatIsRalph.benefit3.title": "迭代",
+  "section.whatIsRalph.benefit3.desc": "复杂任务被分解为增量进展",
+  
+  "section.whatIsOpenSpec.title": "什么是 OpenSpec？",
+  "section.whatIsOpenSpec.description": "OpenSpec 是面向 AI 编码助手的规范驱动开发（SDD）。它通过在编码前要求规范来为 AI 编码带来结构。",
+  "section.whatIsOpenSpec.feature1.title": "先有规范后有代码",
+  "section.whatIsOpenSpec.feature1.desc": "在实现之前就构建目标达成共识",
+  "section.whatIsOpenSpec.feature2.title": "结构化变更",
+  "section.whatIsOpenSpec.feature2.desc": "specs/（真实来源）+ changes/（提案）",
+  "section.whatIsOpenSpec.feature3.title": "验收标准",
+  "section.whatIsOpenSpec.feature3.desc": "每个需求都有可测试的场景",
+  
+  "section.whyRalphySpec.title": "为什么选择 Ralphy-Spec？",
+  "section.whyRalphySpec.description": "AI 编码助手功能强大但不可预测。Ralphy-Spec 通过结合两者的优势来解决这个问题。",
+  "section.whyRalphySpec.problem1": "聊天记录中的需求模糊",
+  "section.whyRalphySpec.solution1": "OpenSpec 将意图锁定在结构化规范中",
+  "section.whyRalphySpec.problem2": "AI 中途停止或出错",
+  "section.whyRalphySpec.solution2": "Ralph 循环重试直到完成",
+  "section.whyRalphySpec.problem3": "无法验证正确性",
+  "section.whyRalphySpec.solution3": "验收标准 + 测试验证输出",
+  "section.whyRalphySpec.problem4": "特定工具的设置很繁琐",
+  "section.whyRalphySpec.solution4": "一条命令设置 Cursor、OpenCode、Claude Code",
+  
+  "section.platforms.title": "支持的平台",
+  "section.platforms.description": "Ralphy-Spec 与您喜爱的 AI 编码工具配合使用。",
+  "section.platforms.cursor": "Cursor",
+  "section.platforms.opencode": "OpenCode",
+  "section.platforms.claude": "Claude Code",
+  "section.platforms.viewGuide": "查看设置指南",
+  
+  "section.credits.title": "致谢",
+  "section.credits.description": "Ralphy-Spec 站在巨人的肩膀上：",
+  "section.credits.ralph.title": "Ralph Wiggum 方法论",
+  "section.credits.ralph.desc": "由 Geoffrey Huntley 构思。AI 代理可以通过迭代进行自我纠正的洞见改变了我们对 AI 辅助开发的看法。",
+  "section.credits.th0rgal.title": "opencode-ralph-wiggum",
+  "section.credits.th0rgal.desc": "由 @Th0rgal 开发 - 一个简洁的 OpenCode Ralph 循环 CLI 实现，启发了我们的集成方式。",
+  "section.credits.openspec.title": "OpenSpec",
+  "section.credits.openspec.desc": "由 Fission-AI 开发 - 为 AI 编码带来结构和可预测性的规范驱动开发框架。",
+  "section.credits.thanks": "我们感谢这些项目及其维护者开创了这些方法。",
+  
+  "docs.title": "文档",
+  "docs.gettingStarted": "入门指南",
+  "docs.installation": "安装",
+  "docs.workflow": "工作流程",
+  "docs.platformGuides": "平台指南",
+  
+  "footer.madeWith": "用",
+  "footer.by": "由社区制作"
+}

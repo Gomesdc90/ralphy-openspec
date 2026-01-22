@@ -1,0 +1,94 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl, getPathWithoutLang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const pathWithoutLang = getPathWithoutLang(Astro.url.pathname);
+---
+
+<div class="language-picker">
+  <button class="language-btn" aria-label="Select language">
+    <span class="current-lang">{languages[lang]}</span>
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+      <path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    </svg>
+  </button>
+  <div class="language-dropdown">
+    {Object.entries(languages).map(([code, name]) => (
+      <a 
+        href={`/${code}${pathWithoutLang}`} 
+        class:list={['language-option', { active: code === lang }]}
+      >
+        {name}
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .language-picker {
+    position: relative;
+  }
+
+  .language-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .language-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-text);
+  }
+
+  .language-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.5rem;
+    min-width: 120px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    z-index: 50;
+  }
+
+  .language-picker:hover .language-dropdown,
+  .language-picker:focus-within .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .language-option {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    transition: all 0.15s ease;
+  }
+
+  .language-option:hover {
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-text);
+  }
+
+  .language-option.active {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+</style>

@@ -1,0 +1,165 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { ui } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(ui).map(lang => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="OpenCode Setup Guide">
+  <div class="docs-page">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href={`/${lang}/docs/`}>{t('docs.title')}</a> / <span>OpenCode</span>
+      </nav>
+
+      <h1>🔧 OpenCode Setup Guide</h1>
+      
+      <section class="docs-section">
+        <h2>Installation</h2>
+        <p>Initialize Ralphy-Spec with OpenCode support:</p>
+        <pre><code>cd your-project
+ralphy-spec init --tools opencode</code></pre>
+        
+        <p>Or select OpenCode during interactive setup:</p>
+        <pre><code>ralphy-spec init</code></pre>
+      </section>
+
+      <section class="docs-section">
+        <h2>What Gets Installed</h2>
+        <p>Ralphy-Spec creates an <code>AGENTS.md</code> file at the project root:</p>
+        <pre><code>your-project/
+├── AGENTS.md          # Agent instructions
+├── openspec/
+│   ├── specs/
+│   ├── changes/
+│   └── project.md
+└── .ralphy/
+    ├── config.json
+    └── ralph-loop.state.json</code></pre>
+        
+        <p>OpenCode automatically reads <code>AGENTS.md</code> for workflow instructions.</p>
+      </section>
+
+      <section class="docs-section">
+        <h2>Using with Ralph Loop</h2>
+        <p>Ralphy-Spec is designed to work with Ralph loop runners like <a href="https://github.com/Th0rgal/opencode-ralph-wiggum" target="_blank" rel="noopener">opencode-ralph-wiggum</a>:</p>
+        
+        <pre><code># Install ralph-wiggum
+npm install -g @th0rgal/ralph-wiggum
+
+# Run a Ralph loop to implement an OpenSpec change
+ralph "Follow AGENTS.md to implement the add-auth change. \
+  Output &lt;promise&gt;TASK_COMPLETE&lt;/promise&gt; when all tasks are done and tests pass." \
+  --max-iterations 20</code></pre>
+      </section>
+
+      <section class="docs-section">
+        <h2>Workflow Commands</h2>
+        <p>When using OpenCode, ask it to follow the AGENTS.md workflow:</p>
+        
+        <div class="command-card">
+          <h3>Plan Phase</h3>
+          <p>"Follow AGENTS.md to create an OpenSpec proposal for [your feature]"</p>
+        </div>
+
+        <div class="command-card">
+          <h3>Implement Phase</h3>
+          <p>"Follow AGENTS.md to implement the [change-name] change"</p>
+        </div>
+
+        <div class="command-card">
+          <h3>Validate Phase</h3>
+          <p>"Follow AGENTS.md to validate the implementation"</p>
+        </div>
+
+        <div class="command-card">
+          <h3>Archive Phase</h3>
+          <p>"Follow AGENTS.md to archive the [change-name] change"</p>
+        </div>
+      </section>
+
+      <section class="docs-section">
+        <h2>Completion Promise</h2>
+        <p>The Ralph loop expects a completion signal. Configure it in <code>.ralphy/config.json</code>:</p>
+        <pre><code>{`{
+  "testCommand": "npm test",
+  "completionPromise": "TASK_COMPLETE"
+}`}</code></pre>
+        <p>When all tasks are complete and tests pass, the agent should output:</p>
+        <pre><code>&lt;promise&gt;TASK_COMPLETE&lt;/promise&gt;</code></pre>
+      </section>
+
+      <div class="nav-links">
+        <a href={`/${lang}/docs/cursor`}>← Cursor Guide</a>
+        <a href={`/${lang}/docs/claude`}>Claude Code Guide →</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .docs-page {
+    padding: 4rem 0;
+  }
+
+  .breadcrumb {
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-secondary);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-primary);
+  }
+
+  .docs-page h1 {
+    margin-bottom: 2rem;
+  }
+
+  .docs-section {
+    margin-bottom: 3rem;
+  }
+
+  .docs-section h2 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .command-card {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .command-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .command-card p {
+    margin-bottom: 0;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-primary);
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+</style>

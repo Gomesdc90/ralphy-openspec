@@ -1,0 +1,73 @@
+{
+  "site.title": "Ralphy-Spec",
+  "site.description": "反復実行によるスペック駆動AI開発",
+  
+  "nav.home": "ホーム",
+  "nav.docs": "ドキュメント",
+  "nav.github": "GitHub",
+  "nav.getStarted": "始める",
+  
+  "hero.title": "反復実行によるスペック駆動AI開発",
+  "hero.subtitle": "OpenSpecの構造化された仕様とRalphループの反復実行を組み合わせて、予測可能なAI支援開発を実現します。",
+  "hero.cta": "始める",
+  "hero.learnMore": "詳細を見る",
+  
+  "quickstart.title": "クイックスタート",
+  "quickstart.description": "1つのコマンドでプロジェクトにRalphy-Specをセットアップ：",
+  
+  "section.whatIsRalph.title": "Ralph Wiggumループとは？",
+  "section.whatIsRalph.description": "Ralph方法論（Geoffrey Huntleyが提唱）は、AIエージェントがタスクを完了するまで同じプロンプトを繰り返し受け取る開発アプローチです。各イテレーションで、AIはファイルとgit履歴で以前の作業を確認し、自己修正フィードバックループを形成します。",
+  "section.whatIsRalph.essence": "Ralphの本質：",
+  "section.whatIsRalph.benefit1.title": "自己修正",
+  "section.whatIsRalph.benefit1.desc": "AIは以前の実行でのテスト失敗を見て修正します",
+  "section.whatIsRalph.benefit2.title": "永続性",
+  "section.whatIsRalph.benefit2.desc": "席を外して戻ると、作業が完了しています",
+  "section.whatIsRalph.benefit3.title": "反復",
+  "section.whatIsRalph.benefit3.desc": "複雑なタスクが段階的な進捗に分解されます",
+  
+  "section.whatIsOpenSpec.title": "OpenSpecとは？",
+  "section.whatIsOpenSpec.description": "OpenSpecは、AIコーディングアシスタント向けのスペック駆動開発（SDD）です。コードの前にスペックを要求することで、AIコーディングに構造をもたらします。",
+  "section.whatIsOpenSpec.feature1.title": "コードより先にスペック",
+  "section.whatIsOpenSpec.feature1.desc": "実装前に何を構築するか合意します",
+  "section.whatIsOpenSpec.feature2.title": "構造化された変更",
+  "section.whatIsOpenSpec.feature2.desc": "specs/（真実の情報源）+ changes/（提案）",
+  "section.whatIsOpenSpec.feature3.title": "受け入れ基準",
+  "section.whatIsOpenSpec.feature3.desc": "すべての要件にテスト可能なシナリオがあります",
+  
+  "section.whyRalphySpec.title": "なぜRalphy-Specなのか？",
+  "section.whyRalphySpec.description": "AIコーディングアシスタントは強力ですが予測不可能です。Ralphy-Specは両方の長所を組み合わせてこれを解決します。",
+  "section.whyRalphySpec.problem1": "チャット履歴の曖昧な要件",
+  "section.whyRalphySpec.solution1": "OpenSpecが意図を構造化されたスペックに固定",
+  "section.whyRalphySpec.problem2": "AIが途中で停止したりミスをする",
+  "section.whyRalphySpec.solution2": "Ralphループが完了するまでリトライ",
+  "section.whyRalphySpec.problem3": "正確性を検証する方法がない",
+  "section.whyRalphySpec.solution3": "受け入れ基準 + テストで出力を検証",
+  "section.whyRalphySpec.problem4": "ツール固有のセットアップが面倒",
+  "section.whyRalphySpec.solution4": "1つのコマンドでCursor、OpenCode、Claude Codeをセットアップ",
+  
+  "section.platforms.title": "対応プラットフォーム",
+  "section.platforms.description": "Ralphy-Specはお気に入りのAIコーディングツールで動作します。",
+  "section.platforms.cursor": "Cursor",
+  "section.platforms.opencode": "OpenCode",
+  "section.platforms.claude": "Claude Code",
+  "section.platforms.viewGuide": "セットアップガイドを見る",
+  
+  "section.credits.title": "謝辞",
+  "section.credits.description": "Ralphy-Specは巨人の肩の上に立っています：",
+  "section.credits.ralph.title": "Ralph Wiggum方法論",
+  "section.credits.ralph.desc": "Geoffrey Huntleyが考案。AIエージェントが反復を通じて自己修正できるという洞察は、AI支援開発についての私たちの考え方を変えました。",
+  "section.credits.th0rgal.title": "opencode-ralph-wiggum",
+  "section.credits.th0rgal.desc": "@Th0rgal開発 - 私たちの統合アプローチにインスピレーションを与えたOpenCode用のクリーンなRalphループCLI実装。",
+  "section.credits.openspec.title": "OpenSpec",
+  "section.credits.openspec.desc": "Fission-AI開発 - AIコーディングに構造と予測可能性をもたらすスペック駆動開発フレームワーク。",
+  "section.credits.thanks": "これらのアプローチを開拓したこれらのプロジェクトとメンテナーに感謝します。",
+  
+  "docs.title": "ドキュメント",
+  "docs.gettingStarted": "はじめに",
+  "docs.installation": "インストール",
+  "docs.workflow": "ワークフロー",
+  "docs.platformGuides": "プラットフォームガイド",
+  
+  "footer.madeWith": "作成",
+  "footer.by": "コミュニティによる"
+}

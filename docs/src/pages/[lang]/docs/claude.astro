@@ -1,0 +1,176 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { ui } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(ui).map(lang => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="Claude Code Setup Guide">
+  <div class="docs-page">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href={`/${lang}/docs/`}>{t('docs.title')}</a> / <span>Claude Code</span>
+      </nav>
+
+      <h1>🤖 Claude Code Setup Guide</h1>
+      
+      <section class="docs-section">
+        <h2>Installation</h2>
+        <p>Initialize Ralphy-Spec with Claude Code support:</p>
+        <pre><code>cd your-project
+ralphy-spec init --tools claude-code</code></pre>
+        
+        <p>Or select Claude Code during interactive setup:</p>
+        <pre><code>ralphy-spec init</code></pre>
+      </section>
+
+      <section class="docs-section">
+        <h2>What Gets Installed</h2>
+        <p>Ralphy-Spec creates the following files for Claude Code:</p>
+        <pre><code>.claude/
+└── commands/
+    ├── ralphy-plan.md
+    ├── ralphy-implement.md
+    ├── ralphy-validate.md
+    └── ralphy-archive.md</code></pre>
+      </section>
+
+      <section class="docs-section">
+        <h2>Using the Commands</h2>
+        <p>In Claude Code, use the slash commands to trigger each workflow phase:</p>
+        
+        <div class="command-card">
+          <h3><code>/ralphy:plan</code></h3>
+          <p>Create an OpenSpec change proposal from your requirements or PRD.</p>
+          <p class="example">Example: "Create an OpenSpec proposal for adding a payment system"</p>
+        </div>
+
+        <div class="command-card">
+          <h3><code>/ralphy:implement</code></h3>
+          <p>Implement tasks from the current OpenSpec change. Compatible with Ralph loop methodology.</p>
+          <p class="example">Example: "Implement the add-payments change"</p>
+        </div>
+
+        <div class="command-card">
+          <h3><code>/ralphy:validate</code></h3>
+          <p>Run tests and validate that all acceptance criteria from the spec are met.</p>
+          <p class="example">Example: "Validate that the payment integration works correctly"</p>
+        </div>
+
+        <div class="command-card">
+          <h3><code>/ralphy:archive</code></h3>
+          <p>Archive the completed change and merge spec deltas back to source of truth.</p>
+          <p class="example">Example: "Archive the add-payments change"</p>
+        </div>
+      </section>
+
+      <section class="docs-section">
+        <h2>Tips for Claude Code</h2>
+        <ul>
+          <li>Claude Code reads commands from <code>.claude/commands/</code> automatically</li>
+          <li>Use <code>@file</code> references to include spec files in context</li>
+          <li>The completion promise <code>&lt;promise&gt;TASK_COMPLETE&lt;/promise&gt;</code> signals done state</li>
+          <li>Works great with the built-in terminal for running tests</li>
+        </ul>
+      </section>
+
+      <section class="docs-section">
+        <h2>Full Workflow Example</h2>
+        <pre><code># 1. Plan - Create OpenSpec from requirements
+/ralphy:plan Add user profile settings page with avatar upload
+
+# 2. Implement - Build the feature
+/ralphy:implement add-profile-settings
+
+# 3. Validate - Ensure tests pass
+/ralphy:validate
+
+# 4. Archive - Complete the change
+/ralphy:archive add-profile-settings</code></pre>
+      </section>
+
+      <div class="nav-links">
+        <a href={`/${lang}/docs/opencode`}>← OpenCode Guide</a>
+        <a href={`/${lang}/docs/`}>Back to Documentation →</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .docs-page {
+    padding: 4rem 0;
+  }
+
+  .breadcrumb {
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-secondary);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-primary);
+  }
+
+  .docs-page h1 {
+    margin-bottom: 2rem;
+  }
+
+  .docs-section {
+    margin-bottom: 3rem;
+  }
+
+  .docs-section h2 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .docs-section ul {
+    margin-left: 1.5rem;
+  }
+
+  .docs-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .command-card {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .command-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .command-card p {
+    margin-bottom: 0.5rem;
+  }
+
+  .command-card .example {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+</style>

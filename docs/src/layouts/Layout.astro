@@ -1,0 +1,64 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { 
+  title = t('site.title'), 
+  description = t('site.description') 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Ralphy-Spec</title>
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <p>
+          {t('footer.madeWith')} ❤️ {t('footer.by')}
+        </p>
+        <p class="footer-links">
+          <a href="https://github.com/anthropics/ralphy-openspec" target="_blank" rel="noopener">GitHub</a>
+          <span>•</span>
+          <a href="https://www.npmjs.com/package/ralphy-spec" target="_blank" rel="noopener">npm</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .footer {
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+
+  .footer-links {
+    margin-top: 0.5rem;
+  }
+
+  .footer-links span {
+    margin: 0 0.5rem;
+  }
+</style>

@@ -1,0 +1,115 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+import fse from "fs-extra";
+import type { ToolId } from "../types";
+import { getDistTemplatesDir } from "./paths";
+
+async function ensureDir(p: string) {
+  await fs.mkdir(p, { recursive: true });
+}
+
+async function writeFileIfMissing(filePath: string, contents: string) {
+  try {
+    await fs.access(filePath);
+  } catch {
+    await ensureDir(path.dirname(filePath));
+    await fs.writeFile(filePath, contents, "utf8");
+  }
+}
+
+export async function ensureOpenSpecScaffold(projectDir: string): Promise<void> {
+  const openspecDir = path.join(projectDir, "openspec");
+  await ensureDir(path.join(openspecDir, "specs"));
+  await ensureDir(path.join(openspecDir, "changes"));
+  await ensureDir(path.join(openspecDir, "archive"));
+
+  await writeFileIfMissing(
+    path.join(openspecDir, "project.md"),
+    [
+      "# Project Context",
+      "",
+      "Describe your project's tech stack, conventions, and architecture here.",
+      "",
+      "## Stack",
+      "- Language:",
+      "- Framework:",
+      "- Package manager:",
+      "",
+      "## Conventions",
+      "- Code style:",
+      "- Testing:",
+      "- CI:",
+      "",
+    ].join("\n")
+  );
+}
+
+export async function installToolTemplates(
+  projectDir: string,
+  tools: ToolId[],
+  opts: { force: boolean }
+): Promise<void> {
+  const templatesRoot = getDistTemplatesDir();
+
+  // Cursor
+  if (tools.includes("cursor")) {
+    const src = path.join(templatesRoot, "cursor");
+    const dst = path.join(projectDir, ".cursor", "prompts");
+    await fse.ensureDir(dst);
+    await fse.copy(src, dst, { overwrite: opts.force, errorOnExist: false });
+  }
+
+  // Claude Code
+  if (tools.includes("claude-code")) {
+    const src = path.join(templatesRoot, "claude-code");
+    const dst = path.join(projectDir, ".claude", "commands");
+    await fse.ensureDir(dst);
+    await fse.copy(src, dst, { overwrite: opts.force, errorOnExist: false });
+  }
+
+  // OpenCode / AGENTS.md
+  if (tools.includes("opencode")) {
+    const srcAgents = path.join(templatesRoot, "opencode", "AGENTS.md");
+    const dstAgents = path.join(projectDir, "AGENTS.md");
+
+    if (opts.force) {
+      await fse.copyFile(srcAgents, dstAgents);
+    } else {
+      // Only write if missing
+      try {
+        await fs.access(dstAgents);
+      } catch {
+        await fse.copyFile(srcAgents, dstAgents);
+      }
+    }
+  }
+
+  // Ralphy config/state
+  const ralphyDir = path.join(projectDir, ".ralphy");
+  await ensureDir(ralphyDir);
+  await writeFileIfMissing(
+    path.join(ralphyDir, "config.json"),
+    JSON.stringify(
+      {
+        testCommand: "npm test",
+        completionPromise: "TASK_COMPLETE",
+      },
+      null,
+      2
+    ) + "\n"
+  );
+  await writeFileIfMissing(
+    path.join(ralphyDir, "ralph-loop.state.json"),
+    JSON.stringify(
+      {
+        active: false,
+        change: null,
+        task: null,
+        iteration: 0,
+      },
+      null,
+      2
+    ) + "\n"
+  );
+}
+

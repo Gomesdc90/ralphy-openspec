@@ -1,0 +1,73 @@
+{
+  "site.title": "Ralphy-Spec",
+  "site.description": "반복 실행을 통한 스펙 기반 AI 개발",
+  
+  "nav.home": "홈",
+  "nav.docs": "문서",
+  "nav.github": "GitHub",
+  "nav.getStarted": "시작하기",
+  
+  "hero.title": "반복 실행을 통한 스펙 기반 AI 개발",
+  "hero.subtitle": "OpenSpec의 구조화된 명세와 Ralph 루프의 반복 실행을 결합하여 예측 가능한 AI 지원 개발을 실현합니다.",
+  "hero.cta": "시작하기",
+  "hero.learnMore": "더 알아보기",
+  
+  "quickstart.title": "빠른 시작",
+  "quickstart.description": "한 번의 명령으로 프로젝트에 Ralphy-Spec을 설정하세요:",
+  
+  "section.whatIsRalph.title": "Ralph Wiggum 루프란?",
+  "section.whatIsRalph.description": "Ralph 방법론(Geoffrey Huntley가 제안)은 AI 에이전트가 작업을 완료할 때까지 동일한 프롬프트를 반복적으로 받는 개발 방식입니다. 각 반복에서 AI는 파일과 git 히스토리에서 이전 작업을 보고 자기 수정 피드백 루프를 형성합니다.",
+  "section.whatIsRalph.essence": "Ralph의 본질:",
+  "section.whatIsRalph.benefit1.title": "자기 수정",
+  "section.whatIsRalph.benefit1.desc": "AI가 이전 실행의 테스트 실패를 보고 수정합니다",
+  "section.whatIsRalph.benefit2.title": "지속성",
+  "section.whatIsRalph.benefit2.desc": "자리를 비웠다가 돌아오면 작업이 완료되어 있습니다",
+  "section.whatIsRalph.benefit3.title": "반복",
+  "section.whatIsRalph.benefit3.desc": "복잡한 작업이 점진적인 진행으로 분해됩니다",
+  
+  "section.whatIsOpenSpec.title": "OpenSpec이란?",
+  "section.whatIsOpenSpec.description": "OpenSpec은 AI 코딩 어시스턴트를 위한 스펙 기반 개발(SDD)입니다. 코드 작성 전에 스펙을 요구하여 AI 코딩에 구조를 부여합니다.",
+  "section.whatIsOpenSpec.feature1.title": "코드보다 스펙 먼저",
+  "section.whatIsOpenSpec.feature1.desc": "구현 전에 무엇을 만들지 합의합니다",
+  "section.whatIsOpenSpec.feature2.title": "구조화된 변경",
+  "section.whatIsOpenSpec.feature2.desc": "specs/ (진실의 원천) + changes/ (제안)",
+  "section.whatIsOpenSpec.feature3.title": "인수 기준",
+  "section.whatIsOpenSpec.feature3.desc": "모든 요구사항에 테스트 가능한 시나리오가 있습니다",
+  
+  "section.whyRalphySpec.title": "왜 Ralphy-Spec인가?",
+  "section.whyRalphySpec.description": "AI 코딩 어시스턴트는 강력하지만 예측할 수 없습니다. Ralphy-Spec은 두 가지의 장점을 결합하여 이를 해결합니다.",
+  "section.whyRalphySpec.problem1": "채팅 기록의 모호한 요구사항",
+  "section.whyRalphySpec.solution1": "OpenSpec이 의도를 구조화된 스펙에 고정",
+  "section.whyRalphySpec.problem2": "AI가 중간에 멈추거나 실수함",
+  "section.whyRalphySpec.solution2": "Ralph 루프가 완료될 때까지 재시도",
+  "section.whyRalphySpec.problem3": "정확성을 검증할 방법 없음",
+  "section.whyRalphySpec.solution3": "인수 기준 + 테스트로 출력 검증",
+  "section.whyRalphySpec.problem4": "도구별 설정이 번거로움",
+  "section.whyRalphySpec.solution4": "한 번의 명령으로 Cursor, OpenCode, Claude Code 설정",
+  
+  "section.platforms.title": "지원 플랫폼",
+  "section.platforms.description": "Ralphy-Spec은 선호하는 AI 코딩 도구와 함께 작동합니다.",
+  "section.platforms.cursor": "Cursor",
+  "section.platforms.opencode": "OpenCode",
+  "section.platforms.claude": "Claude Code",
+  "section.platforms.viewGuide": "설정 가이드 보기",
+  
+  "section.credits.title": "감사의 말",
+  "section.credits.description": "Ralphy-Spec은 거인의 어깨 위에 서 있습니다:",
+  "section.credits.ralph.title": "Ralph Wiggum 방법론",
+  "section.credits.ralph.desc": "Geoffrey Huntley가 고안. AI 에이전트가 반복을 통해 자기 수정할 수 있다는 통찰력은 AI 지원 개발에 대한 우리의 생각을 바꾸었습니다.",
+  "section.credits.th0rgal.title": "opencode-ralph-wiggum",
+  "section.credits.th0rgal.desc": "@Th0rgal 개발 - 우리의 통합 방식에 영감을 준 OpenCode용 깔끔한 Ralph 루프 CLI 구현.",
+  "section.credits.openspec.title": "OpenSpec",
+  "section.credits.openspec.desc": "Fission-AI 개발 - AI 코딩에 구조와 예측 가능성을 부여하는 스펙 기반 개발 프레임워크.",
+  "section.credits.thanks": "이러한 접근 방식을 개척한 이 프로젝트들과 유지 관리자들에게 감사드립니다.",
+  
+  "docs.title": "문서",
+  "docs.gettingStarted": "시작하기",
+  "docs.installation": "설치",
+  "docs.workflow": "워크플로우",
+  "docs.platformGuides": "플랫폼 가이드",
+  
+  "footer.madeWith": "만든이",
+  "footer.by": "커뮤니티"
+}

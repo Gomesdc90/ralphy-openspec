@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Features from '../../components/Features.astro';
+import { ui } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(ui).map(lang => ({ params: { lang } }));
+}
+---
+
+<Layout>
+  <Hero />
+  <Features />
+</Layout>

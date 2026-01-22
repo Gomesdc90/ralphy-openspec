@@ -1,0 +1,206 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { ui } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(ui).map(lang => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('docs.title')}>
+  <div class="docs-page">
+    <div class="container">
+      <h1>{t('docs.gettingStarted')}</h1>
+      
+      <section class="docs-section">
+        <h2>{t('docs.installation')}</h2>
+        <p>Install Ralphy-Spec globally via npm:</p>
+        <pre><code>npm install -g ralphy-spec</code></pre>
+        
+        <p>Or use npx without installing:</p>
+        <pre><code>npx ralphy-spec init</code></pre>
+      </section>
+
+      <section class="docs-section">
+        <h2>Initialize in Your Project</h2>
+        <pre><code>cd your-project
+ralphy-spec init</code></pre>
+        
+        <p>This will:</p>
+        <ul>
+          <li>Create the <code>openspec/</code> directory structure</li>
+          <li>Install tool-specific templates based on your selection</li>
+          <li>Set up Ralph loop configuration in <code>.ralphy/</code></li>
+        </ul>
+      </section>
+
+      <section class="docs-section">
+        <h2>{t('docs.workflow')}</h2>
+        <div class="workflow-diagram">
+          <div class="workflow-step">
+            <span class="step-number">1</span>
+            <span class="step-label">Plan</span>
+            <p>Use <code>/ralphy:plan</code> to create OpenSpec from requirements</p>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-step">
+            <span class="step-number">2</span>
+            <span class="step-label">Implement</span>
+            <p>Use <code>/ralphy:implement</code> to build with Ralph loop</p>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-step">
+            <span class="step-number">3</span>
+            <span class="step-label">Validate</span>
+            <p>Use <code>/ralphy:validate</code> to verify acceptance criteria</p>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-step">
+            <span class="step-number">4</span>
+            <span class="step-label">Archive</span>
+            <p>Use <code>/ralphy:archive</code> to merge back to specs</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="docs-section">
+        <h2>{t('docs.platformGuides')}</h2>
+        <div class="platform-links">
+          <a href={`/${lang}/docs/cursor`} class="platform-link-card">
+            <span class="icon">⚡</span>
+            <span>Cursor</span>
+          </a>
+          <a href={`/${lang}/docs/opencode`} class="platform-link-card">
+            <span class="icon">🔧</span>
+            <span>OpenCode</span>
+          </a>
+          <a href={`/${lang}/docs/claude`} class="platform-link-card">
+            <span class="icon">🤖</span>
+            <span>Claude Code</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .docs-page {
+    padding: 4rem 0;
+  }
+
+  .docs-page h1 {
+    margin-bottom: 2rem;
+  }
+
+  .docs-section {
+    margin-bottom: 3rem;
+  }
+
+  .docs-section h2 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .docs-section ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .docs-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .workflow-diagram {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .workflow-step {
+    flex: 1;
+    min-width: 150px;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .workflow-step p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .workflow-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-secondary);
+    font-size: 1.5rem;
+    padding-top: 2rem;
+  }
+
+  .platform-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .platform-link-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    transition: all 0.2s ease;
+  }
+
+  .platform-link-card:hover {
+    border-color: var(--color-primary);
+    color: var(--color-text);
+  }
+
+  .platform-link-card .icon {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .workflow-arrow {
+      display: none;
+    }
+
+    .workflow-step {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,64 @@
+{
+  "name": "ralphy-spec",
+  "version": "0.1.0",
+  "description": "One-command setup for Ralph loop + OpenSpec workflows across Cursor, OpenCode, and Claude Code.",
+  "license": "BSD-3-Clause",
+  "author": "Wenqing Yu",
+  "homepage": "https://ralphy-spec.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthropics/ralphy-openspec.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anthropics/ralphy-openspec/issues"
+  },
+  "keywords": [
+    "openspec",
+    "ralph",
+    "ralph-wiggum",
+    "ai",
+    "cursor",
+    "claude",
+    "claude-code",
+    "opencode",
+    "spec-driven",
+    "ai-coding",
+    "ai-assistant"
+  ],
+  "bin": {
+    "ralphy-spec": "bin/ralphy-spec.js"
+  },
+  "files": [
+    "bin/",
+    "dist/",
+    "scripts/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "build": "npm run clean && tsc -p tsconfig.json && node scripts/copy-templates.mjs",
+    "clean": "node scripts/clean.mjs",
+    "dev": "node --enable-source-maps dist/index.js --help",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "fs-extra": "^11.3.0",
+    "inquirer": "^12.6.3",
+    "ora": "^9.0.0",
+    "yaml": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.13.0",
+    "typescript": "^5.7.3"
+  }
+}
