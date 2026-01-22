@@ -4,185 +4,177 @@
 
 <section class="section" id="setup">
   <div class="container">
-    <h2 class="section-title">Quick Setup</h2>
-    <p class="section-description">One command to install, then choose your AI tool:</p>
+    <h4 class="section-title">Quick Start</h4>
 
     <!-- Install Command -->
     <div class="install-box">
-      <div class="install-label">1. Install</div>
+      <div class="install-header">
+        <span class="install-step">01</span>
+        <span class="install-label">Install</span>
+      </div>
       <div class="install-command">
         <code>npx ralphy-spec init</code>
         <button class="copy-btn" data-copy="npx ralphy-spec init" title="Copy">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M4 4h8v8H4V4zm-2 2v8h8v-2H4V6H2z"/>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
           </svg>
         </button>
       </div>
     </div>
 
-    <!-- Tool Tabs -->
-    <div class="tool-tabs">
-      <div class="tab-buttons">
-        <button class="tab-btn active" data-tab="cursor">⚡ Cursor</button>
-        <button class="tab-btn" data-tab="claude">🤖 Claude Code</button>
-        <button class="tab-btn" data-tab="opencode">🔧 OpenCode</button>
+    <!-- Tool Selection -->
+    <div class="tool-section">
+      <div class="tool-header">
+        <span class="install-step">02</span>
+        <span class="install-label">Use Commands</span>
       </div>
+      
+      <div class="tool-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="cursor">Cursor</button>
+          <button class="tab-btn" data-tab="claude">Claude Code</button>
+          <button class="tab-btn" data-tab="opencode">OpenCode</button>
+        </div>
 
-      <!-- Cursor Tab -->
-      <div class="tab-content active" id="tab-cursor">
-        <div class="tab-grid">
-          <div class="tab-commands">
-            <h4>2. Use These Commands</h4>
-            <div class="command-list">
-              <div class="command-item">
+        <!-- Cursor Tab -->
+        <div class="tab-content active" id="tab-cursor">
+          <div class="tab-inner">
+            <div class="commands-section">
+              <div class="command-row">
                 <code>/ralphy:plan</code>
-                <span>Create specs from requirements</span>
+                <span>→ Create specs from requirements</span>
               </div>
-              <div class="command-item">
+              <div class="command-row">
                 <code>/ralphy:implement</code>
-                <span>Build with iterative loop</span>
+                <span>→ Build with iterative loop</span>
               </div>
-              <div class="command-item">
+              <div class="command-row">
                 <code>/ralphy:validate</code>
-                <span>Verify acceptance criteria</span>
+                <span>→ Verify acceptance criteria</span>
               </div>
-              <div class="command-item">
+              <div class="command-row">
                 <code>/ralphy:archive</code>
-                <span>Complete and archive</span>
+                <span>→ Complete and archive</span>
               </div>
             </div>
-          </div>
-          <div class="tab-structure">
-            <h4>Files Created</h4>
-            <pre><code>.cursor/prompts/
+            <div class="structure-section">
+              <div class="structure-label">Files Created</div>
+              <pre><code>.cursor/prompts/
 ├── ralphy-plan.md
 ├── ralphy-implement.md
 ├── ralphy-validate.md
 └── ralphy-archive.md
 
 openspec/
-├── specs/        # Source of truth
-├── changes/      # Active work
-└── project.md    # Context</code></pre>
-          </div>
-        </div>
-        <div class="tab-example">
-          <h4>Example Workflow</h4>
-          <pre><code># 1. Plan: Create spec from your idea
-You: /ralphy:plan Add user authentication with JWT
-
-# 2. Implement: AI builds it iteratively  
-You: /ralphy:implement add-user-auth
-
-# 3. Validate: Verify tests pass
-You: /ralphy:validate
-
-# 4. Archive: Complete the change
-You: /ralphy:archive add-user-auth</code></pre>
-        </div>
-      </div>
-
-      <!-- Claude Code Tab -->
-      <div class="tab-content" id="tab-claude">
-        <div class="tab-grid">
-          <div class="tab-commands">
-            <h4>2. Use These Commands</h4>
-            <div class="command-list">
-              <div class="command-item">
-                <code>/ralphy:plan</code>
-                <span>Create specs from requirements</span>
-              </div>
-              <div class="command-item">
-                <code>/ralphy:implement</code>
-                <span>Build with iterative loop</span>
-              </div>
-              <div class="command-item">
-                <code>/ralphy:validate</code>
-                <span>Verify acceptance criteria</span>
-              </div>
-              <div class="command-item">
-                <code>/ralphy:archive</code>
-                <span>Complete and archive</span>
-              </div>
+├── specs/
+├── changes/
+└── project.md</code></pre>
             </div>
           </div>
-          <div class="tab-structure">
-            <h4>Files Created</h4>
-            <pre><code>.claude/commands/
+          <div class="example-section">
+            <div class="example-label">Example</div>
+            <pre><code><span class="comment"># Plan</span>
+/ralphy:plan Add user authentication with JWT
+
+<span class="comment"># Implement</span>
+/ralphy:implement add-user-auth
+
+<span class="comment"># Validate</span>
+/ralphy:validate
+
+<span class="comment"># Archive</span>
+/ralphy:archive add-user-auth</code></pre>
+          </div>
+        </div>
+
+        <!-- Claude Code Tab -->
+        <div class="tab-content" id="tab-claude">
+          <div class="tab-inner">
+            <div class="commands-section">
+              <div class="command-row">
+                <code>/ralphy:plan</code>
+                <span>→ Create specs from requirements</span>
+              </div>
+              <div class="command-row">
+                <code>/ralphy:implement</code>
+                <span>→ Build with iterative loop</span>
+              </div>
+              <div class="command-row">
+                <code>/ralphy:validate</code>
+                <span>→ Verify acceptance criteria</span>
+              </div>
+              <div class="command-row">
+                <code>/ralphy:archive</code>
+                <span>→ Complete and archive</span>
+              </div>
+            </div>
+            <div class="structure-section">
+              <div class="structure-label">Files Created</div>
+              <pre><code>.claude/commands/
 ├── ralphy-plan.md
 ├── ralphy-implement.md
 ├── ralphy-validate.md
 └── ralphy-archive.md
 
 openspec/
-├── specs/        # Source of truth
-├── changes/      # Active work
-└── project.md    # Context</code></pre>
+├── specs/
+├── changes/
+└── project.md</code></pre>
+            </div>
+          </div>
+          <div class="example-section">
+            <div class="example-label">Example</div>
+            <pre><code><span class="comment"># Plan</span>
+/ralphy:plan Add payment processing with Stripe
+
+<span class="comment"># Implement</span>
+/ralphy:implement add-payments
+
+<span class="comment"># Validate & Archive</span>
+/ralphy:validate && /ralphy:archive add-payments</code></pre>
           </div>
         </div>
-        <div class="tab-example">
-          <h4>Example Workflow</h4>
-          <pre><code># 1. Plan: Create spec from your idea
-You: /ralphy:plan Add payment processing with Stripe
 
-# 2. Implement: AI builds it iteratively  
-You: /ralphy:implement add-payments
-
-# 3. Validate: Verify tests pass
-You: /ralphy:validate
-
-# 4. Archive: Complete the change
-You: /ralphy:archive add-payments</code></pre>
-        </div>
-      </div>
-
-      <!-- OpenCode Tab -->
-      <div class="tab-content" id="tab-opencode">
-        <div class="tab-grid">
-          <div class="tab-commands">
-            <h4>2. Use with AGENTS.md</h4>
-            <div class="command-list">
-              <div class="command-item">
+        <!-- OpenCode Tab -->
+        <div class="tab-content" id="tab-opencode">
+          <div class="tab-inner">
+            <div class="commands-section">
+              <div class="command-row">
                 <code>"Follow AGENTS.md to plan [feature]"</code>
-                <span>Create specs</span>
               </div>
-              <div class="command-item">
+              <div class="command-row">
                 <code>"Follow AGENTS.md to implement [change]"</code>
-                <span>Build iteratively</span>
               </div>
-              <div class="command-item">
+              <div class="command-row">
                 <code>"Follow AGENTS.md to validate"</code>
-                <span>Verify criteria</span>
               </div>
-              <div class="command-item">
+              <div class="command-row">
                 <code>"Follow AGENTS.md to archive [change]"</code>
-                <span>Complete</span>
               </div>
             </div>
-          </div>
-          <div class="tab-structure">
-            <h4>Files Created</h4>
-            <pre><code>AGENTS.md          # Agent instructions
+            <div class="structure-section">
+              <div class="structure-label">Files Created</div>
+              <pre><code>AGENTS.md
 
 openspec/
-├── specs/         # Source of truth
-├── changes/       # Active work
-└── project.md     # Context
+├── specs/
+├── changes/
+└── project.md
 
 .ralphy/
 ├── config.json
 └── ralph-loop.state.json</code></pre>
+            </div>
           </div>
-        </div>
-        <div class="tab-example">
-          <h4>With Ralph Loop Runner</h4>
-          <pre><code># Install ralph-wiggum for automated loops
-npm install -g @th0rgal/ralph-wiggum
+          <div class="example-section">
+            <div class="example-label">With Ralph Loop Runner</div>
+            <pre><code>npm install -g @th0rgal/ralph-wiggum
 
-# Run iterative implementation
 ralph "Follow AGENTS.md to implement add-api. \
-  Output &lt;promise&gt;TASK_COMPLETE&lt;/promise&gt; when done." \
+  Output &lt;promise&gt;DONE&lt;/promise&gt; when complete." \
   --max-iterations 20</code></pre>
+          </div>
         </div>
       </div>
     </div>
@@ -194,11 +186,9 @@ ralph "Follow AGENTS.md to implement add-api. \
     btn.addEventListener('click', () => {
       const tab = (btn as HTMLElement).dataset.tab;
       
-      // Update buttons
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       
-      // Update content
       document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
       document.getElementById(`tab-${tab}`)?.classList.add('active');
     });
@@ -218,164 +208,188 @@ ralph "Follow AGENTS.md to implement add-api. \
 
 <style>
   .install-box {
-    max-width: 500px;
-    margin: 0 auto 2rem;
-    text-align: center;
+    max-width: 420px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .install-header,
+  .tool-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .install-step {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    opacity: 0.5;
   }
 
   .install-label {
-    font-size: 0.875rem;
+    font-size: 12px;
     color: var(--color-text-secondary);
-    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .install-command {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
+    justify-content: space-between;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    padding: 0.875rem 1rem;
+    border-radius: 6px;
   }
 
   .install-command code {
     background: none;
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-
-  .install-command .copy-btn {
-    background: rgba(255,255,255,0.2);
     border: none;
-    color: white;
-    padding: 0.5rem;
-    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 14px;
+    padding: 0;
+  }
+
+  .copy-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
     cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s ease;
   }
 
-  .install-command .copy-btn:hover {
-    background: rgba(255,255,255,0.3);
+  .copy-btn:hover {
+    color: var(--color-text);
   }
 
-  .install-command .copy-btn.copied {
-    background: var(--color-success);
+  .copy-btn.copied {
+    color: var(--color-success);
   }
 
-  .tool-tabs {
-    max-width: 900px;
+  .tool-section {
+    max-width: 720px;
     margin: 0 auto;
   }
 
   .tab-buttons {
     display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+    background: var(--color-bg-secondary);
+    padding: 0.25rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
   }
 
   .tab-btn {
-    padding: 0.75rem 1.5rem;
-    background: var(--color-bg-tertiary);
-    border: 2px solid var(--color-border);
-    border-radius: 8px;
-    color: var(--color-text-secondary);
-    font-size: 1rem;
-    font-weight: 500;
+    flex: 1;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-family: var(--font-mono);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
   }
 
   .tab-btn:hover {
-    border-color: var(--color-primary);
-    color: var(--color-text);
+    color: var(--color-text-secondary);
   }
 
   .tab-btn.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: white;
+    background: var(--color-bg-tertiary);
+    color: var(--color-text);
   }
 
   .tab-content {
     display: none;
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    padding: 1.5rem;
   }
 
   .tab-content.active {
     display: block;
   }
 
-  .tab-grid {
+  .tab-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
-  .tab-commands h4,
-  .tab-structure h4,
-  .tab-example h4 {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .command-list {
+  .commands-section {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .command-item {
+  .command-row {
     display: flex;
     flex-direction: column;
-    background: var(--color-bg-tertiary);
-    padding: 0.75rem;
+    gap: 0.125rem;
+    padding: 0.625rem 0.75rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
     border-radius: 6px;
+    font-size: 12px;
   }
 
-  .command-item code {
-    color: var(--color-primary);
-    font-size: 0.95rem;
-    margin-bottom: 0.25rem;
+  .command-row code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--color-text);
+    font-size: 12px;
   }
 
-  .command-item span {
-    font-size: 0.8rem;
-    color: var(--color-text-secondary);
+  .command-row span {
+    color: var(--color-text-muted);
+    font-size: 11px;
   }
 
-  .tab-structure pre {
+  .structure-section pre {
     margin: 0;
-    font-size: 0.85rem;
+    font-size: 11px;
+    line-height: 1.5;
   }
 
-  .tab-example {
+  .structure-label,
+  .example-label {
+    font-size: 10px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .example-section {
     border-top: 1px solid var(--color-border);
-    padding-top: 1.5rem;
+    padding-top: 1rem;
   }
 
-  .tab-example pre {
+  .example-section pre {
     margin: 0;
-    font-size: 0.85rem;
+    font-size: 12px;
+  }
+
+  .example-section .comment {
+    color: var(--color-text-muted);
   }
 
   @media (max-width: 640px) {
-    .tab-grid {
+    .tab-inner {
       grid-template-columns: 1fr;
     }
 
     .tab-btn {
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
+      padding: 0.5rem 0.5rem;
+      font-size: 11px;
     }
   }
 </style>

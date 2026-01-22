@@ -1,292 +1,293 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+// How It Works section
 ---
 
-<!-- How It Works Section -->
 <section class="section" id="how-it-works">
   <div class="container">
-    <h2 class="section-title">How It Works</h2>
+    <h4 class="section-title">How It Works</h4>
     
-    <div class="concepts-grid">
-      <!-- Ralph Loop -->
-      <div class="concept-card">
-        <div class="concept-icon">🔄</div>
-        <h3>Ralph Wiggum Loop</h3>
-        <p>AI receives the <strong>same prompt repeatedly</strong> until task completion. Each iteration, it sees previous work and self-corrects.</p>
-        <pre><code>while true; do
+    <div class="concepts">
+      <div class="concept">
+        <div class="concept-header">
+          <span class="concept-num">01</span>
+          <h3>Ralph Wiggum Loop</h3>
+        </div>
+        <p>AI receives the <strong>same prompt repeatedly</strong> until task completion. Each iteration, it sees previous work in files and self-corrects.</p>
+        <pre><code>while !done; do
   ai "Build X. Output DONE when complete."
-  # AI sees files, fixes mistakes
 done</code></pre>
       </div>
       
-      <!-- OpenSpec -->
-      <div class="concept-card">
-        <div class="concept-icon">📋</div>
-        <h3>OpenSpec</h3>
-        <p><strong>Specs before code.</strong> Structured specs with acceptance criteria ensure AI knows exactly what to build.</p>
+      <div class="concept">
+        <div class="concept-header">
+          <span class="concept-num">02</span>
+          <h3>OpenSpec</h3>
+        </div>
+        <p><strong>Specs before code.</strong> Structured specifications with acceptance criteria ensure AI knows exactly what to build.</p>
         <pre><code>openspec/
-├── specs/      # Source of truth
-├── changes/    # Proposals + tasks
-└── archive/    # Completed</code></pre>
+├── specs/      # Truth
+├── changes/    # Work
+└── archive/    # Done</code></pre>
       </div>
     </div>
 
-    <!-- Workflow Diagram -->
-    <div class="workflow-section">
-      <h3>The Workflow</h3>
+    <div class="workflow">
+      <div class="workflow-label">Workflow</div>
       <div class="workflow-steps">
-        <div class="workflow-step">
-          <div class="step-num">1</div>
-          <div class="step-content">
-            <strong>Plan</strong>
-            <span>PRD → OpenSpec</span>
-          </div>
+        <div class="step">
+          <span class="step-name">Plan</span>
+          <span class="step-desc">PRD → Spec</span>
         </div>
-        <div class="workflow-arrow">→</div>
-        <div class="workflow-step">
-          <div class="step-num">2</div>
-          <div class="step-content">
-            <strong>Implement</strong>
-            <span>Ralph Loop</span>
-          </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <span class="step-name">Implement</span>
+          <span class="step-desc">Loop</span>
         </div>
-        <div class="workflow-arrow">→</div>
-        <div class="workflow-step">
-          <div class="step-num">3</div>
-          <div class="step-content">
-            <strong>Validate</strong>
-            <span>Tests Pass</span>
-          </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <span class="step-name">Validate</span>
+          <span class="step-desc">Tests</span>
         </div>
-        <div class="workflow-arrow">→</div>
-        <div class="workflow-step">
-          <div class="step-num">4</div>
-          <div class="step-content">
-            <strong>Archive</strong>
-            <span>Merge Specs</span>
-          </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <span class="step-name">Archive</span>
+          <span class="step-desc">Merge</span>
         </div>
       </div>
     </div>
 
-    <!-- Why Section -->
-    <div class="why-section">
-      <h3>Why This Combination?</h3>
-      <div class="why-grid">
-        <div class="why-item">
-          <div class="problem">❌ Vague requirements</div>
-          <div class="solution">✅ Specs lock intent</div>
+    <div class="benefits">
+      <div class="benefits-label">Why This Works</div>
+      <div class="benefits-grid">
+        <div class="benefit">
+          <span class="benefit-problem">Vague requirements</span>
+          <span class="benefit-arrow">→</span>
+          <span class="benefit-solution">Specs lock intent</span>
         </div>
-        <div class="why-item">
-          <div class="problem">❌ AI stops mid-task</div>
-          <div class="solution">✅ Loop retries</div>
+        <div class="benefit">
+          <span class="benefit-problem">AI stops mid-task</span>
+          <span class="benefit-arrow">→</span>
+          <span class="benefit-solution">Loop retries</span>
         </div>
-        <div class="why-item">
-          <div class="problem">❌ No verification</div>
-          <div class="solution">✅ Tests validate</div>
+        <div class="benefit">
+          <span class="benefit-problem">No verification</span>
+          <span class="benefit-arrow">→</span>
+          <span class="benefit-solution">Tests validate</span>
         </div>
-        <div class="why-item">
-          <div class="problem">❌ Manual setup</div>
-          <div class="solution">✅ One command</div>
+        <div class="benefit">
+          <span class="benefit-problem">Manual setup</span>
+          <span class="benefit-arrow">→</span>
+          <span class="benefit-solution">One command</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Credits Section -->
-<section class="section section-alt" id="credits">
+<section class="section credits-section" id="credits">
   <div class="container">
-    <h2 class="section-title">{t('section.credits.title')}</h2>
-    <div class="credits-grid">
-      <a href="https://ghuntley.com/ralph" target="_blank" rel="noopener" class="credit-card">
-        <strong>Ralph Methodology</strong>
-        <span>by Geoffrey Huntley</span>
+    <h4 class="section-title">Credits</h4>
+    <div class="credits">
+      <a href="https://ghuntley.com/ralph" target="_blank" rel="noopener" class="credit">
+        <span class="credit-name">Ralph Methodology</span>
+        <span class="credit-by">Geoffrey Huntley</span>
       </a>
-      <a href="https://github.com/Th0rgal/opencode-ralph-wiggum" target="_blank" rel="noopener" class="credit-card">
-        <strong>opencode-ralph-wiggum</strong>
-        <span>by @Th0rgal</span>
+      <a href="https://github.com/Th0rgal/opencode-ralph-wiggum" target="_blank" rel="noopener" class="credit">
+        <span class="credit-name">opencode-ralph-wiggum</span>
+        <span class="credit-by">@Th0rgal</span>
       </a>
-      <a href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener" class="credit-card">
-        <strong>OpenSpec</strong>
-        <span>by Fission-AI</span>
+      <a href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener" class="credit">
+        <span class="credit-name">OpenSpec</span>
+        <span class="credit-by">Fission-AI</span>
       </a>
     </div>
   </div>
 </section>
 
 <style>
-  .section-alt {
-    background-color: var(--color-bg-secondary);
-  }
-
-  .concepts-grid {
+  .concepts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
   }
 
-  .concept-card {
+  .concept {
+    padding: 1.25rem;
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
-    border-radius: 12px;
-    padding: 1.5rem;
+    border-radius: 8px;
   }
 
-  .concept-icon {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .concept-card h3 {
-    margin-bottom: 0.5rem;
-  }
-
-  .concept-card p {
-    color: var(--color-text-secondary);
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-  }
-
-  .concept-card pre {
-    font-size: 0.8rem;
-    margin: 0;
-  }
-
-  .workflow-section {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .workflow-section h3 {
-    margin-bottom: 1.5rem;
-  }
-
-  .workflow-steps {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .workflow-step {
+  .concept-header {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .concept-num {
+    font-size: 10px;
+    color: var(--color-text-muted);
+    opacity: 0.5;
+  }
+
+  .concept h3 {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .concept p {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .concept pre {
+    font-size: 11px;
+    margin: 0;
+  }
+
+  .workflow {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .workflow-label,
+  .benefits-label {
+    font-size: 10px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .workflow-steps {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
-    padding: 0.75rem 1rem;
     border-radius: 8px;
   }
 
-  .step-num {
-    width: 28px;
-    height: 28px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 0.875rem;
-  }
-
-  .step-content {
+  .step {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+
+  .step-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .step-desc {
+    font-size: 10px;
+    color: var(--color-text-muted);
+  }
+
+  .step-arrow {
+    color: var(--color-text-muted);
+    opacity: 0.3;
+    font-size: 12px;
+  }
+
+  .benefits {
+    text-align: center;
+  }
+
+  .benefits-grid {
+    display: inline-grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
     text-align: left;
   }
 
-  .step-content strong {
-    font-size: 0.9rem;
-  }
-
-  .step-content span {
-    font-size: 0.75rem;
-    color: var(--color-text-secondary);
-  }
-
-  .workflow-arrow {
-    color: var(--color-text-secondary);
-    font-size: 1.25rem;
-  }
-
-  .why-section h3 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .why-item {
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 1rem;
+    border-radius: 6px;
+    font-size: 11px;
   }
 
-  .problem {
+  .benefit-problem {
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+
+  .benefit-arrow {
+    color: var(--color-text-muted);
+    opacity: 0.3;
+  }
+
+  .benefit-solution {
     color: var(--color-text-secondary);
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
   }
 
-  .solution {
-    color: var(--color-success);
-    font-size: 0.875rem;
-    font-weight: 500;
+  .credits-section {
+    border-bottom: none;
   }
 
-  .credits-grid {
+  .credits {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.75rem;
     flex-wrap: wrap;
   }
 
-  .credit-card {
-    background: var(--color-bg);
+  .credit {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 1rem 1.5rem;
+    border-radius: 6px;
     text-align: center;
+    transition: border-color 0.15s ease;
+  }
+
+  .credit:hover {
+    border-color: var(--color-border-hover);
+  }
+
+  .credit-name {
+    font-size: 12px;
     color: var(--color-text);
-    transition: all 0.2s ease;
+    margin-bottom: 0.125rem;
   }
 
-  .credit-card:hover {
-    border-color: var(--color-primary);
-    color: var(--color-text);
-  }
-
-  .credit-card strong {
-    display: block;
-    margin-bottom: 0.25rem;
-  }
-
-  .credit-card span {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
+  .credit-by {
+    font-size: 10px;
+    color: var(--color-text-muted);
   }
 
   @media (max-width: 640px) {
-    .workflow-arrow {
+    .concepts {
+      grid-template-columns: 1fr;
+    }
+
+    .workflow-steps {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .step-arrow {
       display: none;
     }
-    
-    .workflow-steps {
-      flex-direction: column;
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
