@@ -1,4 +1,18 @@
 ---
-// Redirect root to default locale
-return Astro.redirect('/en/');
+// Redirect root to default locale (English)
 ---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=/en/">
+  <link rel="canonical" href="/en/">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <script>window.location.href = '/en/';</script>
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=/en/">
+  </noscript>
+</body>
+</html>
