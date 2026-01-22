@@ -7,10 +7,10 @@
   "homepage": "https://ralphy-spec.org",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anthropics/ralphy-openspec.git"
+    "url": "git+https://github.com/wenqingyu/ralphy-openspec.git"
   },
   "bugs": {
-    "url": "https://github.com/anthropics/ralphy-openspec/issues"
+    "url": "https://github.com/wenqingyu/ralphy-openspec/issues"
   },
   "keywords": [
     "openspec",
