@@ -34,6 +34,16 @@ Then use the commands for your AI tool:
 | `/ralphy-validate` | Verify acceptance criteria |
 | `/ralphy-archive` | Complete and archive |
 
+If you want to run the full workflow from a terminal with Cursor as the backend (no IDE slash commands), you must authenticate Cursor Agent first:
+
+```bash
+cursor agent login
+# or set CURSOR_API_KEY in your environment
+
+ralphy-spec run --backend cursor
+# backend output streams by default; add --no-stream-backend to silence
+```
+
 ### Claude Code
 
 | Command | What it does |

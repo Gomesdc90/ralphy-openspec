@@ -35,7 +35,7 @@ ralphy-spec validate [--dir &lt;path&gt;] [--tools &lt;cursor,claude-code,openco
 ralphy-spec validate --task &lt;taskId&gt; [--dir &lt;path&gt;]
 
 ralphy-spec run [--backend &lt;cursor|opencode|claude-code|noop&gt;] [--workspace &lt;worktree|patch&gt;]
-              [--artifact-dir &lt;dir&gt;] [--task &lt;taskId&gt;] [--dry-run] [--json]
+              [--artifact-dir &lt;dir&gt;] [--task &lt;taskId&gt;] [--no-stream-backend] [--dry-run] [--json]
 
 ralphy-spec status [--json]
 ralphy-spec budget [--json]
@@ -54,6 +54,13 @@ ralphy-spec checkpoint --task &lt;taskId&gt; --message &lt;message&gt;</code></p
           <li><strong>Run</strong>: <code>ralphy-spec run</code></li>
           <li><strong>Observe</strong>: <code>status</code>/<code>tail</code>/<code>budget</code>/<code>report</code></li>
         </ol>
+      </section>
+
+      <section class="docs-section">
+        <h2>Backend notes</h2>
+        <ul>
+          <li><strong>Cursor</strong>: <code>--backend cursor</code> uses Cursor Agent. Run <code>cursor agent login</code> (or set <code>CURSOR_API_KEY</code>) before running <code>ralphy-spec run</code>.</li>
+        </ul>
       </section>
 
       <section class="docs-section">

@@ -19,7 +19,7 @@ export class OpenCodeBackend implements CodingBackend {
 
     try {
       // OpenCode CLI: `opencode run --prompt "..." --non-interactive`
-      const result = await execa(
+      const subprocess = execa(
         "opencode",
         ["run", "--prompt", prompt, "--non-interactive"],
         {
@@ -29,6 +29,12 @@ export class OpenCodeBackend implements CodingBackend {
           stdio: "pipe",
         }
       );
+      if (env.stream) {
+        subprocess.stdout?.pipe(process.stdout);
+        subprocess.stderr?.pipe(process.stderr);
+      }
+
+      const result = await subprocess;
 
       if (result.exitCode === 0) {
         return {

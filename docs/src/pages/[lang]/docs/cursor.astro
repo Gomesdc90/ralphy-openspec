@@ -71,6 +71,18 @@ ralphy-spec init --tools cursor</code></pre>
       </section>
 
       <section class="docs-section">
+        <h2>Terminal workflow (Cursor as backend)</h2>
+        <p>If you want to run <code>ralphy-spec</code> fully from a terminal and use Cursor for execution (<code>--backend cursor</code>), you must authenticate Cursor Agent first:</p>
+        <pre><code>cursor agent login
+cursor agent status</code></pre>
+        <p>Then run the CLI:</p>
+        <pre><code>ralphy-spec run --dry-run
+ralphy-spec run --backend cursor</code></pre>
+        <p class="muted">Backend output is streamed by default. Use <code>--no-stream-backend</code> to disable streaming.</p>
+        <p class="muted">Tip: for CI or non-interactive environments, set <code>CURSOR_API_KEY</code> instead of using <code>cursor agent login</code>.</p>
+      </section>
+
+      <section class="docs-section">
         <h2>Tips for Cursor</h2>
         <ul>
           <li>Restart Cursor after running <code>ralphy-spec init</code> to load the new slash commands</li>
@@ -90,6 +102,11 @@ ralphy-spec init --tools cursor</code></pre>
 <style>
   .docs-page {
     padding: 4rem 0;
+  }
+
+  .muted {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
   }
 
   .breadcrumb {

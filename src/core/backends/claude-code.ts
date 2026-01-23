@@ -21,12 +21,18 @@ export class ClaudeCodeBackend implements CodingBackend {
     try {
       // Claude CLI: `claude --print "prompt"` for headless operation
       // The --print flag runs claude non-interactively
-      const result = await execa("claude", ["--print", prompt], {
+      const subprocess = execa("claude", ["--print", prompt], {
         cwd: env.cwd,
         timeout: this.opts.timeoutMs ?? 600_000, // 10 min default
         reject: false,
         stdio: "pipe",
       });
+      if (env.stream) {
+        subprocess.stdout?.pipe(process.stdout);
+        subprocess.stderr?.pipe(process.stderr);
+      }
+
+      const result = await subprocess;
 
       if (result.exitCode === 0) {
         return {

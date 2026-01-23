@@ -34,6 +34,7 @@ export type EngineOptions = {
   taskId?: string;
   dryRun: boolean;
   json: boolean;
+  streamBackend?: boolean;
 };
 
 export type RunOutcome =
@@ -181,6 +182,7 @@ export class EngineLoop {
           ledger,
           runBudgetManager,
           artifacts: artifactsEnabled ? { rootDir: artifactsRootDir } : null,
+          streamBackend: opts.streamBackend,
         });
 
         if (!outcome.ok) {
@@ -228,6 +230,7 @@ export class EngineLoop {
     ledger: LedgerLogger;
     runBudgetManager: BudgetManager;
     artifacts: { rootDir?: string } | null;
+    streamBackend?: boolean;
   }): Promise<RunOutcome> {
     const { task, runId, persistence, ledger, runBudgetManager } = args;
     let artifacts = args.artifacts;
@@ -532,7 +535,7 @@ export class EngineLoop {
       }
 
       const backendRes = await args.backend.implement(
-        { cwd, backendId: args.backend.id },
+        { cwd, backendId: args.backend.id, stream: args.streamBackend },
         {
           task,
           iteration: iter,

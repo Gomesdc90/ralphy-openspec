@@ -34,6 +34,10 @@ export function registerRunCommand(program: Command): void {
     .option("--workspace <mode>", "Workspace mode: worktree|patch")
     .option("--artifact-dir <dir>", "Override artifact root directory (enables artifacts)")
     .option("--task <taskId>", "Run a single task (skips dependency checks)")
+    .option(
+      "--no-stream-backend",
+      "Disable streaming backend stdout/stderr to the terminal (default: stream)"
+    )
     .option("--dry-run", "Validate spec and print plan only", false)
     .option("--json", "Machine-readable output", false)
     .addHelpText(
@@ -49,6 +53,7 @@ export function registerRunCommand(program: Command): void {
         workspace?: "worktree" | "patch";
         artifactDir?: string;
         task?: string;
+        streamBackend: boolean;
         dryRun: boolean;
         json: boolean;
       }) => {
@@ -112,6 +117,7 @@ export function registerRunCommand(program: Command): void {
           taskId: opts.task,
           dryRun: false,
           json: opts.json,
+          streamBackend: opts.streamBackend && !opts.json,
         });
 
         if (opts.json) {

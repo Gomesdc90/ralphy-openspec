@@ -30,3 +30,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ralphy-spec run` now supports `worktree` mode and real backend selection (`cursor|opencode|claude-code|noop`).
 - Docs + README (all languages) updated to reflect the new artifacts and CLI.
 
+## [0.3.1] - 2026-01-23
+
+### Fixed
+- `--backend cursor` now invokes **Cursor Agent** (`cursor agent --print ...`) instead of the editor CLI, and provides a clear error when Cursor Agent authentication is missing.
+
+## [0.3.2] - 2026-01-23
+
+### Changed
+- `ralphy-spec run` now streams backend output to the terminal by default. Use `--no-stream-backend` to disable (and `--json` remains non-streaming).
+
