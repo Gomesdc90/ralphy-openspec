@@ -159,6 +159,10 @@ export class EngineLoop {
 
     const taskBudgetConfig = this.toTaskBudgetConfig(task) ?? null;
 
+    let pendingRepairNotes: string | undefined;
+    let lastValidatorResults: Record<string, any> | null = null;
+    let lastIssues: any[] | null = null;
+
     for (let iter = 1; iter <= maxIter; iter++) {
       const iterStarted = Date.now();
 
@@ -182,12 +186,35 @@ export class EngineLoop {
       }
 
       const tier = taskBudgetConfig ? budgetManager.getTier(taskBudgetConfig) : "optimal";
-      const shouldDegrade = taskBudgetConfig ? budgetManager.shouldApplyDegrade(taskBudgetConfig) : false;
+      const shouldDegrade = taskBudgetConfig
+        ? budgetManager.shouldApplyDegrade(taskBudgetConfig)
+        : false;
       if (shouldDegrade) {
         ledger.event({
           taskId: task.id,
           kind: "degrade",
           message: "WARNING tier: degrade behaviors enabled",
+        });
+      }
+
+      if (shouldDegrade && lastValidatorResults && lastIssues) {
+        const ctx = buildContextPack({
+          tier: "warning",
+          taskId: task.id,
+          validatorResults: lastValidatorResults,
+          issues: lastIssues,
+        });
+        ledger.event({
+          taskId: task.id,
+          kind: "context_pack",
+          message: `Context pack built (${ctx.size})`,
+        });
+
+        // Optional calls disabling (MVP: only logs, as we don't have optional calls yet).
+        ledger.event({
+          taskId: task.id,
+          kind: "optional_calls_skipped",
+          message: "WARNING tier: skipping optional calls (self-review / plan regen)",
         });
       }
 
@@ -206,9 +233,11 @@ export class EngineLoop {
         {
           task,
           iteration: iter,
-          repairNotes: shouldDegrade
-            ? "WARNING tier active (repair-only mode will be enforced on failures)."
-            : undefined,
+          repairNotes:
+            pendingRepairNotes ??
+            (shouldDegrade
+              ? "WARNING tier active (repair-only mode will be enforced on failures)."
+              : undefined),
         }
       );
 
@@ -240,12 +269,25 @@ export class EngineLoop {
       });
 
       const results = await runner.runAll(validators);
-      const allIssues = Object.entries(results).flatMap(([id, r]) =>
-        r.issues.map((i) => ({
+      const allIssues = Object.entries(results).flatMap(([id, r]) => {
+        // If a validator failed but produced no parsed issues, create a generic one.
+        const issues =
+          !r.ok && r.issues.length === 0
+            ? [
+                {
+                  kind: "unknown" as const,
+                  level: "error" as const,
+                  message: `Validator "${id}" failed (exit=${r.exitCode ?? "?"})`,
+                  raw: { validatorId: id },
+                },
+              ]
+            : r.issues;
+
+        return issues.map((i) => ({
           ...i,
           raw: i.raw ?? { validatorId: id },
-        }))
-      );
+        }));
+      });
 
       // Contract enforcement after EXEC
       if (task.filesContract) {
@@ -263,7 +305,8 @@ export class EngineLoop {
         }
       }
 
-      const ok = allIssues.every((i) => i.level !== "error");
+      const ok =
+        Object.values(results).every((r) => r.ok) && allIssues.every((i) => i.level !== "error");
       ledger.event({
         taskId: task.id,
         kind: "validate",
@@ -297,28 +340,10 @@ export class EngineLoop {
         return { ok: true, runId };
       }
 
-      // WARNING tier: shrink context + repair-only text on next iteration.
-      const tierAfter = taskBudgetConfig ? budgetManager.getTier(taskBudgetConfig) : "optimal";
-      if (tierAfter === "warning") {
-        const ctx = buildContextPack({
-          tier: "warning",
-          taskId: task.id,
-          validatorResults: results,
-          issues: allIssues,
-        });
-        ledger.event({
-          taskId: task.id,
-          kind: "context_pack",
-          message: `Context pack built (${ctx.size})`,
-        });
-
-        // Optional calls disabling (MVP: only logs, as we don't have optional calls yet).
-        ledger.event({
-          taskId: task.id,
-          kind: "optional_calls_skipped",
-          message: "WARNING tier: skipping optional calls (self-review / plan regen)",
-        });
-      }
+      // Save failure context for next iteration.
+      lastValidatorResults = results;
+      lastIssues = allIssues;
+      pendingRepairNotes = undefined;
 
       phase = "DIAGNOSE";
       persistence.upsertTaskState({
@@ -340,17 +365,14 @@ export class EngineLoop {
       }
 
       phase = "REPAIR";
+      const tierAfter = taskBudgetConfig ? budgetManager.getTier(taskBudgetConfig) : "optimal";
       const repairNotes = buildRepairNotes({
         tier: tierAfter === "warning" ? "warning" : "optimal",
         issues: allIssues,
       });
       ledger.event({ taskId: task.id, kind: "repair", message: "Retrying (repair loop)" });
 
-      // Feed repair notes into next iteration via backend input (best effort).
-      await args.backend.implement(
-        { cwd, backendId: args.backend.id },
-        { task, iteration: iter + 1, repairNotes }
-      );
+      pendingRepairNotes = repairNotes;
       budgetManager.recordIteration(Date.now() - iterStarted);
     }
 

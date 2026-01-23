@@ -1,4 +1,4 @@
-# /ralphy:plan (PRD -> OpenSpec change)
+# /ralphy-plan (PRD -> OpenSpec change)
 
 You are an AI coding assistant. Your job is to convert user requirements into an OpenSpec change proposal with clear acceptance criteria.
 

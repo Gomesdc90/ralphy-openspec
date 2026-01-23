@@ -1,4 +1,4 @@
-# /ralphy:archive (Archive completed change)
+# /ralphy-archive (Archive completed change)
 
 You are an AI coding assistant archiving a completed OpenSpec change.
 

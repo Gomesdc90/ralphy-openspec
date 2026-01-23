@@ -1,4 +1,4 @@
-# /ralphy:implement (Implement OpenSpec tasks)
+# /ralphy-implement (Implement OpenSpec tasks)
 
 You are an AI coding assistant implementing an existing OpenSpec change.
 

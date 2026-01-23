@@ -1,4 +1,4 @@
-# /ralphy:validate (Validate against acceptance criteria)
+# /ralphy-validate (Validate against acceptance criteria)
 
 You are validating an OpenSpec change.
 

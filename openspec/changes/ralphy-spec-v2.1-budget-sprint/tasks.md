@@ -8,33 +8,33 @@
 ## Phase 1: Budget Tier System
 
 ### 1.1 Budget Schema Extension
-- [ ] **1.1.1** Extend Zod schema for three-tier budgets
+- [x] **1.1.1** Extend Zod schema for three-tier budgets
   - File: `src/core/spec/schemas.ts`
   - Add `TaskBudgetConfig` with optimal/warning/hard tiers
   - Test plan: Schema validates sample task with all three tiers
 
-- [ ] **1.1.2** Implement budget tier calculation
+- [x] **1.1.2** Implement budget tier calculation
   - File: `src/core/budgets/tiers.ts`
   - Function: `getBudgetTier(used, config) → "optimal" | "warning" | "hard"`
   - Test plan: Unit tests for tier transitions
 
-- [ ] **1.1.3** Extend BudgetManager with tier awareness
+- [x] **1.1.3** Extend BudgetManager with tier awareness
   - File: `src/core/budgets/manager.ts`
   - Add: `getTier()`, `shouldApplyDegrade()`, `isAtHardCap()`
   - Test plan: Tier changes trigger at correct thresholds
 
 ### 1.2 Degrade Behaviors
-- [ ] **1.2.1** Implement context shrink in warning range
+- [x] **1.2.1** Implement context shrink in warning range
   - File: `src/core/engine/context-pack.ts`
   - When tier="warning": include only failing test output + issue files
   - Test plan: Context size reduced in warning range
 
-- [ ] **1.2.2** Implement repair-only mode
+- [x] **1.2.2** Implement repair-only mode
   - File: `src/core/engine/repair.ts`
   - Add constraints: "Do NOT refactor", "Fix only validators"
   - Test plan: Repair prompt contains restriction text
 
-- [ ] **1.2.3** Implement optional call disabling
+- [x] **1.2.3** Implement optional call disabling
   - File: `src/core/engine/loop.ts`
   - Skip self-review and planning regeneration in warning range
   - Test plan: Self-review skipped when tier="warning"

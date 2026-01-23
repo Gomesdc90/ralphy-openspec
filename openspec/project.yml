@@ -5,7 +5,7 @@
 version: "1.1"
 
 project:
-  name: "my-project"
+  name: "ralphy-spec"
   repoRoot: "."
   language: "ts"
   packageManager: "npm"          # user-defined: npm | pnpm | yarn | bun
@@ -100,19 +100,46 @@ validators:
     parser: "jest"
 
 # Tasks - define your implementation tasks here
+# Active change: ralphy-spec-v2.1-budget-sprint
 tasks:
-  - id: "demo-001"
-    title: "Demo task (no validators)"
-    goal: "Verify engine can run a single task end-to-end."
-    validators: []
-  - id: "demo-002-warning"
-    title: "Demo warning-tier degrade behavior"
-    goal: "Force a failing validator so the loop enters REPAIR; warn-tier should shrink context and add repair-only constraints."
-    validators: ["failfast"]
+  # Phase 1.3: Hard Cap Behavior
+  - id: "v2.1-1.3.1"
+    title: "Implement graceful task blocking"
+    goal: "On hard cap: preserve workspace, write summary, mark BLOCKED"
+    validators: ["typecheck"]
     budget:
-      optimal: { time_minutes: 0 }
-      warning: { time_minutes: 0 }
-      hard: { time_minutes: 1, max_iterations: 3 }
+      optimal: { usd: 1.2, tokens: 80000, time_minutes: 10 }
+      warning: { usd: 2.0, tokens: 150000, time_minutes: 15 }
+      hard: { usd: 3.0, tokens: 250000, time_minutes: 20, max_iterations: 8 }
+    files_contract:
+      allowed: ["src/core/engine/**"]
+      forbidden: []
+      
+  - id: "v2.1-1.3.2"
+    title: "Write failure summary on block"
+    goal: "Include: spend breakdown, last issues, suggested manual steps"
+    deps: ["v2.1-1.3.1"]
+    validators: ["typecheck"]
+    budget:
+      optimal: { usd: 0.8, tokens: 60000, time_minutes: 8 }
+      warning: { usd: 1.5, tokens: 100000, time_minutes: 12 }
+      hard: { usd: 2.0, tokens: 150000, time_minutes: 15, max_iterations: 5 }
+    files_contract:
+      allowed: ["src/core/reporting/**"]
+      forbidden: []
+
+  # Phase 2.1: Sprint Schema
+  - id: "v2.1-2.1.1"
+    title: "Add sprint fields to task schema"
+    goal: "Add sprint.size (XS/S/M/L/XL) and sprint.intent (fix/feature/refactor/infra)"
+    validators: ["typecheck"]
+    budget:
+      optimal: { usd: 0.5, tokens: 40000, time_minutes: 5 }
+      warning: { usd: 0.8, tokens: 65000, time_minutes: 8 }
+      hard: { usd: 1.2, tokens: 100000, time_minutes: 12, max_iterations: 5 }
+    files_contract:
+      allowed: ["src/core/spec/**"]
+      forbidden: []
 
 # ============================================================
 # TASK EXAMPLES (uncomment and modify as needed)

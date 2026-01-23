@@ -1,4 +1,4 @@
-# /ralphy:validate (Validate against acceptance criteria)
+# /ralphy-validate (Validate against acceptance criteria)
 
 You are an AI coding assistant validating an OpenSpec change against its acceptance criteria.
 

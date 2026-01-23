@@ -1,4 +1,4 @@
-# /ralphy:implement (Implement OpenSpec tasks)
+# /ralphy-implement (Implement OpenSpec tasks)
 
 You are implementing an OpenSpec change located under `openspec/changes/<change-name>/`.
 
